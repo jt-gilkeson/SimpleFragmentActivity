@@ -3,7 +3,7 @@ Basic Activity that handles displaying a custom fragment.
 
 ## How to use it
 
-Add SimpleFragmentAppCompatActivity to your AndroidManifest
+Add SimpleFragmentActivity to your AndroidManifest
 ```xml
 	<activity android:name="com.jt.activity.SimpleFragmentActivity" />
 ```
