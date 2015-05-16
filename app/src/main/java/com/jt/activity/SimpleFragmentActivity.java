@@ -32,7 +32,7 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	private static final String FRAGMENT_TAG  = "FragmentTag";
 
 	/**
-	 * Returns an intent for a SimpleFragmentAppCompatActivity with the specified fragment.
+	 * Returns an intent for a SimpleFragmentActivity with the specified fragment.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> fragmentClass)
 	{
@@ -48,7 +48,7 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	}
 
 	/**
-	 * Returns an intent for a SimpleFragmentAppCompatActivity with the specified title and specified fragment.
+	 * Returns an intent for a SimpleFragmentActivity with the specified title and specified fragment.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> fragmentClass, int titleId)
 	{
@@ -56,7 +56,7 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	}
 
 	/**
-	 * Returns an intent for a SimpleFragmentAppCompatActivity with the specified fragment and fragment tag.
+	 * Returns an intent for a SimpleFragmentActivity with the specified fragment and fragment tag.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> fragmentClass, String tag)
 	{
