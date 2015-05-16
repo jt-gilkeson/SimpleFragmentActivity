@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Test Activity that launches SimpleFragmentAppCompatActivity
+ * Test Activity that launches SimpleFragmentActivity
  */
 public class MainActivity extends AppCompatActivity
 {
