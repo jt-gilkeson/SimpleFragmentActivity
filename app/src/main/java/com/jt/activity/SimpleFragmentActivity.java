@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jt.simplefragmentappcompatactivity;
+package com.jt.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,7 +25,7 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * Basic Activity that handles displaying a custom fragment
  */
-public class SimpleFragmentAppCompatActivity extends AppCompatActivity
+public class SimpleFragmentActivity extends AppCompatActivity
 {
 	private static final String TITLE         = "ActivityTitle";
 	private static final String FRAGMENT_NAME = "FragmentName";
@@ -76,7 +76,7 @@ public class SimpleFragmentAppCompatActivity extends AppCompatActivity
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag, int titleId)
 	{
-		Intent intent = new Intent(context, activityClass == null ? SimpleFragmentAppCompatActivity.class : activityClass);
+		Intent intent = new Intent(context, activityClass == null ? SimpleFragmentActivity.class : activityClass);
 		intent.putExtra(TITLE, titleId);
 		intent.putExtra(FRAGMENT_NAME, fragmentClass.getName());
 		intent.putExtra(FRAGMENT_TAG, tag == null ? fragmentClass.getName() : tag);

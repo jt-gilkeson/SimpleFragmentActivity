@@ -1,4 +1,4 @@
-package com.jt.simplefragmentappcompatactivity;
+package com.jt.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 
-		Intent testIntent = SimpleFragmentAppCompatActivity.getActivityIntent(this, Fragment.class);
+		Intent testIntent = SimpleFragmentActivity.getActivityIntent(this, Fragment.class);
 		startActivity(testIntent);
 
 		this.finish();
