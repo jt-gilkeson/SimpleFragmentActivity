@@ -15,8 +15,7 @@
 
 		</activity>
 
-		<activity
-			android:name=".SimpleFragmentAppCompatActivity" />
+		<activity android:name="com.jt.simplefragmentappcompatactivity.SimpleFragmentAppCompatActivity" />
 
 	</application>
 
