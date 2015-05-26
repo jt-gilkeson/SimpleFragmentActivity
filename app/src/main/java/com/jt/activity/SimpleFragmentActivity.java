@@ -104,8 +104,6 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
-		super.onCreate(savedInstanceState);
-
 		Bundle extras = getIntent().getExtras();
 
 		if (extras == null || !extras.containsKey(FRAGMENT_NAME) || !extras.containsKey(FRAGMENT_TAG))
@@ -113,17 +111,20 @@ public class SimpleFragmentActivity extends AppCompatActivity
 			throw new IllegalArgumentException("Missing Fragment Information");
 		}
 
+		// set theme if specified
+		int theme = extras.getInt(THEME);
+		if (theme > 0)
+		{
+			setTheme(theme);
+		}
+
+		super.onCreate(savedInstanceState);
+
 		// set title if specified
 		int title = extras.getInt(TITLE);
 		if (title > 0)
 		{
 			setTitle(title);
-		}
-
-		int theme = extras.getInt(THEME);
-		if (theme > 0)
-		{
-			setTheme(theme);
 		}
 
 		if (savedInstanceState == null)
