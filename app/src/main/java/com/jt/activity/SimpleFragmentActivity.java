@@ -28,6 +28,7 @@ import android.support.v7.app.AppCompatActivity;
 public class SimpleFragmentActivity extends AppCompatActivity
 {
 	private static final String TITLE         = "ActivityTitle";
+	private static final String THEME         = "ActivityTheme";
 	private static final String FRAGMENT_NAME = "FragmentName";
 	private static final String FRAGMENT_TAG  = "FragmentTag";
 
@@ -72,12 +73,25 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	}
 
 	/**
-	 * Returns an intent for the specified activity with with the specified title, the specified fragment, and fragment tag.
+	 * Returns an intent for the specified activity with with the specified title, fragment, and fragment tag.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag, int titleId)
 	{
 		Intent intent = new Intent(context, activityClass == null ? SimpleFragmentActivity.class : activityClass);
 		intent.putExtra(TITLE, titleId);
+		intent.putExtra(FRAGMENT_NAME, fragmentClass.getName());
+		intent.putExtra(FRAGMENT_TAG, tag == null ? fragmentClass.getName() : tag);
+		return intent;
+	}
+
+	/**
+	 * Returns an intent for the specified activity with with the specified title, style, fragment, and fragment tag.
+	 */
+	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag, int titleId, int themeId)
+	{
+		Intent intent = new Intent(context, activityClass == null ? SimpleFragmentActivity.class : activityClass);
+		intent.putExtra(TITLE, titleId);
+		intent.putExtra(THEME, themeId);
 		intent.putExtra(FRAGMENT_NAME, fragmentClass.getName());
 		intent.putExtra(FRAGMENT_TAG, tag == null ? fragmentClass.getName() : tag);
 		return intent;
@@ -100,6 +114,12 @@ public class SimpleFragmentActivity extends AppCompatActivity
 		if (title > 0)
 		{
 			setTitle(title);
+		}
+
+		int theme = extras.getInt(THEME);
+		if (theme > 0)
+		{
+			setTheme(theme);
 		}
 
 		if (savedInstanceState == null)
