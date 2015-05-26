@@ -37,7 +37,7 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> fragmentClass)
 	{
-		return getActivityIntent(context, null, fragmentClass, null, 0);
+		return getActivityIntent(context, null, fragmentClass, null, 0, 0);
 	}
 
 	/**
@@ -45,15 +45,23 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass)
 	{
-		return getActivityIntent(context, activityClass, fragmentClass, null, 0);
+		return getActivityIntent(context, activityClass, fragmentClass, null, 0, 0);
 	}
 
 	/**
-	 * Returns an intent for a SimpleFragmentActivity with the specified title and specified fragment.
+	 * Returns an intent for a SimpleFragmentActivity with the specified title and fragment.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> fragmentClass, int titleId)
 	{
-		return getActivityIntent(context, null, fragmentClass, null, titleId);
+		return getActivityIntent(context, null, fragmentClass, null, titleId, 0);
+	}
+
+	/**
+	 * Returns an intent for a SimpleFragmentActivity with the specified title, theme and fragment.
+	 */
+	public static Intent getActivityIntent(Context context, Class<?> fragmentClass, int titleId, int themeId)
+	{
+		return getActivityIntent(context, null, fragmentClass, null, titleId, themeId);
 	}
 
 	/**
@@ -61,7 +69,7 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> fragmentClass, String tag)
 	{
-		return getActivityIntent(context, null, fragmentClass, tag, 0);
+		return getActivityIntent(context, null, fragmentClass, tag, 0, 0);
 	}
 
 	/**
@@ -69,7 +77,7 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag)
 	{
-		return getActivityIntent(context, activityClass, fragmentClass, tag, 0);
+		return getActivityIntent(context, activityClass, fragmentClass, tag, 0, 0);
 	}
 
 	/**
@@ -77,15 +85,11 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag, int titleId)
 	{
-		Intent intent = new Intent(context, activityClass == null ? SimpleFragmentActivity.class : activityClass);
-		intent.putExtra(TITLE, titleId);
-		intent.putExtra(FRAGMENT_NAME, fragmentClass.getName());
-		intent.putExtra(FRAGMENT_TAG, tag == null ? fragmentClass.getName() : tag);
-		return intent;
+		return getActivityIntent(context, activityClass, fragmentClass, tag, titleId, 0);
 	}
 
 	/**
-	 * Returns an intent for the specified activity with with the specified title, style, fragment, and fragment tag.
+	 * Returns an intent for the specified activity with with the specified title, theme, fragment, and fragment tag.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag, int titleId, int themeId)
 	{
