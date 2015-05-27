@@ -34,6 +34,9 @@ public class SimpleFragmentActivity extends AppCompatActivity
 
 	/**
 	 * Returns an intent for a SimpleFragmentActivity with the specified fragment.
+	 *
+	 * @param context The calling context being used to instantiate the activity.
+	 * @param fragmentClass The fragment class that is to be launched inside this activity.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> fragmentClass)
 	{
@@ -42,6 +45,10 @@ public class SimpleFragmentActivity extends AppCompatActivity
 
 	/**
 	 * Returns an intent for the specified activity with the specified fragment.
+	 *
+	 * @param context The calling context being used to instantiate the activity.
+	 * @param activityClass Optional activity class (use for inherited classes), defaults to SimpleFragmentActivity.
+	 * @param fragmentClass The fragment class that is to be launched inside this activity.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass)
 	{
@@ -50,6 +57,10 @@ public class SimpleFragmentActivity extends AppCompatActivity
 
 	/**
 	 * Returns an intent for a SimpleFragmentActivity with the specified title and fragment.
+	 *
+	 * @param context The calling context being used to instantiate the activity.
+	 * @param fragmentClass The fragment class that is to be launched inside this activity.
+	 * @param titleId Optional string resource for title to display for activity.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> fragmentClass, int titleId)
 	{
@@ -58,6 +69,11 @@ public class SimpleFragmentActivity extends AppCompatActivity
 
 	/**
 	 * Returns an intent for a SimpleFragmentActivity with the specified title, theme and fragment.
+	 *
+	 * @param context The calling context being used to instantiate the activity.
+	 * @param fragmentClass The fragment class that is to be launched inside this activity.
+	 * @param titleId Optional string resource for title to display for activity.
+	 * @param themeId Optional style resource describing the theme of the activity.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> fragmentClass, int titleId, int themeId)
 	{
@@ -66,6 +82,10 @@ public class SimpleFragmentActivity extends AppCompatActivity
 
 	/**
 	 * Returns an intent for a SimpleFragmentActivity with the specified fragment and fragment tag.
+	 *
+	 * @param context The calling context being used to instantiate the activity.
+	 * @param fragmentClass The fragment class that is to be launched inside this activity.
+	 * @param tag  Optional tag name for the fragment, defaults to fragment class name.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> fragmentClass, String tag)
 	{
@@ -74,6 +94,11 @@ public class SimpleFragmentActivity extends AppCompatActivity
 
 	/**
 	 * Returns an intent for the specified activity with the specified fragment and fragment tag.
+	 *
+	 * @param context The calling context being used to instantiate the activity.
+	 * @param activityClass Optional activity class (use for inherited classes), defaults to SimpleFragmentActivity.
+	 * @param fragmentClass The fragment class that is to be launched inside this activity.
+	 * @param tag  Optional tag name for the fragment, defaults to fragment class name.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag)
 	{
@@ -82,6 +107,12 @@ public class SimpleFragmentActivity extends AppCompatActivity
 
 	/**
 	 * Returns an intent for the specified activity with with the specified title, fragment, and fragment tag.
+	 *
+	 * @param context The calling context being used to instantiate the activity.
+	 * @param activityClass Optional activity class (use for inherited classes), defaults to SimpleFragmentActivity.
+	 * @param fragmentClass The fragment class that is to be launched inside this activity.
+	 * @param tag  Optional tag name for the fragment, defaults to fragment class name.
+	 * @param titleId Optional string resource for title to display for activity.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag, int titleId)
 	{
@@ -90,6 +121,13 @@ public class SimpleFragmentActivity extends AppCompatActivity
 
 	/**
 	 * Returns an intent for the specified activity with with the specified title, theme, fragment, and fragment tag.
+	 *
+	 * @param context The calling context being used to instantiate the activity.
+	 * @param activityClass Optional activity class (use for inherited classes), defaults to SimpleFragmentActivity.
+	 * @param fragmentClass The fragment class that is to be launched inside this activity.
+	 * @param tag  Optional tag name for the fragment, defaults to fragment class name.
+	 * @param titleId Optional string resource for title to display for activity.
+	 * @param themeId Optional style resource describing the theme of the activity.
 	 */
 	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag, int titleId, int themeId)
 	{
