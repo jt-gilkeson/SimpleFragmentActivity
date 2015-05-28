@@ -27,10 +27,10 @@ import android.support.v7.app.AppCompatActivity;
  */
 public class SimpleFragmentActivity extends AppCompatActivity
 {
-	private static final String TITLE         = "ActivityTitle";
-	private static final String THEME         = "ActivityTheme";
-	private static final String FRAGMENT_NAME = "FragmentName";
-	private static final String FRAGMENT_TAG  = "FragmentTag";
+	private static final String TITLE         = "sfaActivityTitle";
+	private static final String THEME         = "sfaActivityTheme";
+	private static final String FRAGMENT_NAME = "sfaFragmentName";
+	private static final String FRAGMENT_TAG  = "sfaFragmentTag";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -52,8 +52,8 @@ public class SimpleFragmentActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 
 		// set title if specified
-		int title = extras.getInt(TITLE);
-		if (title > 0)
+		String title = extras.getString(TITLE);
+		if (title != null)
 		{
 			setTitle(title);
 		}

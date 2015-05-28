@@ -15,7 +15,14 @@ public class MainActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 
-		Intent testIntent = new SimpleFragmentActivity.IntentBuilder(this, Fragment.class).create();
+		Intent testIntent = new SimpleFragmentActivity.IntentBuilder(this, Fragment.class)
+				.setFragmentTag("MyTag")
+				.setTheme(R.style.Base_Theme_AppCompat_Light)
+				.setTitle(getString(R.string.app_name))
+				.create();
+
+		testIntent.putExtra("MyExtra", "MyValue");
+
 		startActivity(testIntent);
 
 		this.finish();
