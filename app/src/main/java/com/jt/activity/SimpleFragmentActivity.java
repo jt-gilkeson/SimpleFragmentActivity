@@ -72,7 +72,7 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	public static class IntentBuilder
 	{
 		private Intent mIntent;
-		private String mFagmentName;
+		private String mFragmentName;
 		private String mTag;
 
 		/**
@@ -97,7 +97,7 @@ public class SimpleFragmentActivity extends AppCompatActivity
 		public IntentBuilder(Context context, Class<?> activityClass, Class<?> fragmentClass)
 		{
 			mIntent = new Intent(context, activityClass);
-			mFagmentName = fragmentClass.getName();
+			mFragmentName = fragmentClass.getName();
 		}
 
 		/**
@@ -141,8 +141,8 @@ public class SimpleFragmentActivity extends AppCompatActivity
 		 */
 		public Intent create()
 		{
-			mIntent.putExtra(FRAGMENT_NAME, mFagmentName);
-			mIntent.putExtra(FRAGMENT_TAG, mTag == null ? mFagmentName : mTag);
+			mIntent.putExtra(FRAGMENT_NAME, mFragmentName);
+			mIntent.putExtra(FRAGMENT_TAG, mTag == null ? mFragmentName : mTag);
 			return mIntent;
 		}
 	}
