@@ -9,37 +9,32 @@ Add SimpleFragmentActivity to your AndroidManifest
 ```
 
 ### Basic Usage
-To launch your custom fragment in this wrapper activity simple use one of the intent factory methods and start the activity.
+To launch your custom fragment in this wrapper activity, simply use the IntentBuilder and then start the activity.
 
 ```java
-	Intent testIntent = SimpleFragmentActivity.getActivityIntent(this, MyFragment.class);
+	Intent testIntent = new SimpleFragmentActivity.IntentBuilder(this, Fragment.class).create();
 	startActivity(testIntent);
 ```
 
 ### Advanced Options
-```java
-public static Intent getActivityIntent(Context context,
-                                       Class<?> activityClass,
-                                       Class<?> fragmentClass,
-                                       String tag,
-                                       int titleId,
-                                       int themeId)
-```
-                                       
-Returns an intent for the specified activity with with the specified title, theme, fragment, and fragment tag.
+The IntentBuilder allows you to customize the activity's title, theme, and fragment tag.  You can also add your own arguments for the fragment as extras.
 
-Parameters:
-* context - The calling context being used to instantiate the activity.
-* activityClass - Optional activity class (use for inherited classes), defaults to SimpleFragmentActivity.
-* fragmentClass - The fragment class that is to be launched inside this activity.
-* tag - Optional tag name for the fragment, defaults to fragment class name.
-* titleId - Optional string resource for title to display for activity.
-* themeId - Optional style resource describing the theme of the activity.
+```java
+	Intent testIntent = new SimpleFragmentActivity.IntentBuilder(this, Fragment.class)
+			.setFragmentTag("MyTag")
+			.setTheme(R.style.AppTheme)
+			.setTitle(getString(R.string.app_name))
+			.create();
+	
+	testIntent.putExtra("MyArgument", "MyValue");
+	
+	startActivity(testIntent);
+```
 
 ### Subclassing
-You can also subclass this activty and then use one of the intent factory methods that takes in the subclass (this allows you to customize the subclass's style, label, usage restrictions, etc in AndroidManifest).
+You can also subclass this activty and use the IntentBuilder constructor that takes in the subclass (this allows you to customize the subclass's style, label, usage restrictions, etc in AndroidManifest).
 
 ```java
-	Intent testIntent = MySimpleFragmentActivity.getActivityIntent(this, MySimpleFragmentActivity.class, MyFragment.class);
+	Intent testIntent = new SimpleFragmentActivity.IntentBuilder(this, MySimpleFragmentActivity.class, Fragment.class).create();
 	startActivity(testIntent);
 ```
