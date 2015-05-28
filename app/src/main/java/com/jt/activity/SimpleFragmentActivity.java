@@ -32,113 +32,6 @@ public class SimpleFragmentActivity extends AppCompatActivity
 	private static final String FRAGMENT_NAME = "FragmentName";
 	private static final String FRAGMENT_TAG  = "FragmentTag";
 
-	/**
-	 * Returns an intent for a SimpleFragmentActivity with the specified fragment.
-	 *
-	 * @param context The calling context being used to instantiate the activity.
-	 * @param fragmentClass The fragment class that is to be launched inside this activity.
-	 */
-	public static Intent getActivityIntent(Context context, Class<?> fragmentClass)
-	{
-		return getActivityIntent(context, null, fragmentClass, null, 0, 0);
-	}
-
-	/**
-	 * Returns an intent for the specified activity with the specified fragment.
-	 *
-	 * @param context The calling context being used to instantiate the activity.
-	 * @param activityClass Optional activity class (use for inherited classes), defaults to SimpleFragmentActivity.
-	 * @param fragmentClass The fragment class that is to be launched inside this activity.
-	 */
-	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass)
-	{
-		return getActivityIntent(context, activityClass, fragmentClass, null, 0, 0);
-	}
-
-	/**
-	 * Returns an intent for a SimpleFragmentActivity with the specified title and fragment.
-	 *
-	 * @param context The calling context being used to instantiate the activity.
-	 * @param fragmentClass The fragment class that is to be launched inside this activity.
-	 * @param titleId Optional string resource for title to display for activity.
-	 */
-	public static Intent getActivityIntent(Context context, Class<?> fragmentClass, int titleId)
-	{
-		return getActivityIntent(context, null, fragmentClass, null, titleId, 0);
-	}
-
-	/**
-	 * Returns an intent for a SimpleFragmentActivity with the specified title, theme and fragment.
-	 *
-	 * @param context The calling context being used to instantiate the activity.
-	 * @param fragmentClass The fragment class that is to be launched inside this activity.
-	 * @param titleId Optional string resource for title to display for activity.
-	 * @param themeId Optional style resource describing the theme of the activity.
-	 */
-	public static Intent getActivityIntent(Context context, Class<?> fragmentClass, int titleId, int themeId)
-	{
-		return getActivityIntent(context, null, fragmentClass, null, titleId, themeId);
-	}
-
-	/**
-	 * Returns an intent for a SimpleFragmentActivity with the specified fragment and fragment tag.
-	 *
-	 * @param context The calling context being used to instantiate the activity.
-	 * @param fragmentClass The fragment class that is to be launched inside this activity.
-	 * @param tag  Optional tag name for the fragment, defaults to fragment class name.
-	 */
-	public static Intent getActivityIntent(Context context, Class<?> fragmentClass, String tag)
-	{
-		return getActivityIntent(context, null, fragmentClass, tag, 0, 0);
-	}
-
-	/**
-	 * Returns an intent for the specified activity with the specified fragment and fragment tag.
-	 *
-	 * @param context The calling context being used to instantiate the activity.
-	 * @param activityClass Optional activity class (use for inherited classes), defaults to SimpleFragmentActivity.
-	 * @param fragmentClass The fragment class that is to be launched inside this activity.
-	 * @param tag  Optional tag name for the fragment, defaults to fragment class name.
-	 */
-	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag)
-	{
-		return getActivityIntent(context, activityClass, fragmentClass, tag, 0, 0);
-	}
-
-	/**
-	 * Returns an intent for the specified activity with with the specified title, fragment, and fragment tag.
-	 *
-	 * @param context The calling context being used to instantiate the activity.
-	 * @param activityClass Optional activity class (use for inherited classes), defaults to SimpleFragmentActivity.
-	 * @param fragmentClass The fragment class that is to be launched inside this activity.
-	 * @param tag  Optional tag name for the fragment, defaults to fragment class name.
-	 * @param titleId Optional string resource for title to display for activity.
-	 */
-	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag, int titleId)
-	{
-		return getActivityIntent(context, activityClass, fragmentClass, tag, titleId, 0);
-	}
-
-	/**
-	 * Returns an intent for the specified activity with with the specified title, theme, fragment, and fragment tag.
-	 *
-	 * @param context The calling context being used to instantiate the activity.
-	 * @param activityClass Optional activity class (use for inherited classes), defaults to SimpleFragmentActivity.
-	 * @param fragmentClass The fragment class that is to be launched inside this activity.
-	 * @param tag  Optional tag name for the fragment, defaults to fragment class name.
-	 * @param titleId Optional string resource for title to display for activity.
-	 * @param themeId Optional style resource describing the theme of the activity.
-	 */
-	public static Intent getActivityIntent(Context context, Class<?> activityClass, Class<?> fragmentClass, String tag, int titleId, int themeId)
-	{
-		Intent intent = new Intent(context, activityClass == null ? SimpleFragmentActivity.class : activityClass);
-		intent.putExtra(TITLE, titleId);
-		intent.putExtra(THEME, themeId);
-		intent.putExtra(FRAGMENT_NAME, fragmentClass.getName());
-		intent.putExtra(FRAGMENT_TAG, tag == null ? fragmentClass.getName() : tag);
-		return intent;
-	}
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -173,6 +66,84 @@ public class SimpleFragmentActivity extends AppCompatActivity
 					.beginTransaction()
 					.add(android.R.id.content, frag, extras.getString(FRAGMENT_TAG))
 					.commit();
+		}
+	}
+
+	public static class IntentBuilder
+	{
+		private Intent mIntent;
+		private String mFagmentName;
+		private String mTag;
+
+		/**
+		 * Constructor using a context and fragment class for this builder and the SimpleFragmentActivity it creates.
+		 *
+		 * @param context The calling context being used to instantiate the activity.
+		 * @param fragmentClass The fragment class that is to be launched inside this activity.
+		 */
+		public IntentBuilder(Context context, Class<?> fragmentClass)
+		{
+			this(context, SimpleFragmentActivity.class, fragmentClass);
+		}
+
+		/**
+		 * Constructor using a context, derived activity class, and fragment class for this builder
+		 * and the derived activity it creates.
+		 *
+		 * @param context The calling context being used to instantiate the activity.
+		 * @param activityClass ass Optional activity class (use for inherited classes), defaults to SimpleFragmentActivity.
+		 * @param fragmentClass The fragment class that is to be launched inside this activity.
+		 */
+		public IntentBuilder(Context context, Class<?> activityClass, Class<?> fragmentClass)
+		{
+			mIntent = new Intent(context, activityClass);
+			mFagmentName = fragmentClass.getName();
+		}
+
+		/**
+		 * Set the title using the specified string.
+		 *
+		 * @return This Builder object to allow for chaining of calls to set methods
+		 */
+		public IntentBuilder setTitle(String title)
+		{
+			mIntent.putExtra(TITLE, title);
+			return this;
+		}
+
+		/**
+		 * Set the theme using the specified theme resource id.
+		 *
+		 * @return This Builder object to allow for chaining of calls to set methods
+		 */
+		public IntentBuilder setTheme(int themeId)
+		{
+			mIntent.putExtra(THEME, themeId);
+			return this;
+		}
+
+		/**
+		 * Set the fragment tag using the specified string.
+		 *
+		 * @return This Builder object to allow for chaining of calls to set methods
+		 */
+		public IntentBuilder setFragmentTag(String tag)
+		{
+			mTag = tag;
+			return this;
+		}
+
+		/**
+		 *  Creates an Intent to launch the SimpleFragmentActivity (or specified inherited Activity)
+		 *  with the arguments supplied to this builder.  It does not start the activity.  This allows
+		 *  the user to add additional extras before starting the activity.  It also allows the user to
+		 *  decide whether to startActivity or startActivityForResult with this intent.
+		 */
+		public Intent create()
+		{
+			mIntent.putExtra(FRAGMENT_NAME, mFagmentName);
+			mIntent.putExtra(FRAGMENT_TAG, mTag == null ? mFagmentName : mTag);
+			return mIntent;
 		}
 	}
 }

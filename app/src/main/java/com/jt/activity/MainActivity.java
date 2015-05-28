@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 
-		Intent testIntent = SimpleFragmentActivity.getActivityIntent(this, Fragment.class);
+		Intent testIntent = new SimpleFragmentActivity.IntentBuilder(this, Fragment.class).create();
 		startActivity(testIntent);
 
 		this.finish();
