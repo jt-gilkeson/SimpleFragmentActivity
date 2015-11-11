@@ -32,7 +32,7 @@ The IntentBuilder allows you to customize the activity's title, theme, and fragm
 ```
 
 ### Subclassing
-You can also subclass this activty and use the IntentBuilder constructor that takes in the subclass (this allows you to customize the subclass's style, label, usage restrictions, etc in AndroidManifest).
+You can also subclass this activity and use the IntentBuilder constructor that takes in the subclass (this allows you to customize the subclass's style, label, usage restrictions, etc in AndroidManifest).
 
 ```java
 	Intent testIntent = new SimpleFragmentActivity.IntentBuilder(this, MySimpleFragmentActivity.class, Fragment.class).create();
