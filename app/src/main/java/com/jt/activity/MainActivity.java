@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity
 		Intent testIntent = new SimpleFragmentActivity.IntentBuilder(this, Fragment.class)
 				.setFragmentTag("MyTag")
 				.setTheme(R.style.Base_Theme_AppCompat_Light)
-				.setTitle(getString(R.string.app_name))
+				.setTitle(R.string.app_name)
 				.create();
 
 		testIntent.putExtra("MyExtra", "MyValue");
