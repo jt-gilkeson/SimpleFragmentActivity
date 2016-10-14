@@ -190,6 +190,3 @@ public class SimpleFragmentActivity extends AppCompatActivity
 		Intent create();
 	}
 }
-
-
-
